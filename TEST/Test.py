@@ -1,14 +1,14 @@
-global G_VARIABLE = None
+from sklearn.svm import SVC
 
-def change_g_variable():
-    return G_VARIABLE + 20
+svc = SVC(kernel='rbf', gamma=1.0)
 
-def test_func():
-    for i in range(6):
-        print(i,change_g_variable())
+import numpy as np
+import matplotlib.pyplot as plt
 
+from sklearn import datasets
 
+X, y = datasets.make_moons(noise=0.15, random_state=666)
 
-def main():
-    test_func()
-    
+plt.scatter(X[y==0, 0], X[y==0, 1])
+plt.scatter(X[y==1, 0], X[y==1, 1])
+plt.show()
