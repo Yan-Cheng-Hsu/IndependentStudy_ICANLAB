@@ -12,7 +12,7 @@ InitialPower = 10.0 #unit:dBm = 10*log(W/mW)
 
 
 #Unlabeled Data Preprocessing
-
+SimulationSample = 300
 
 #RSSI List and CurrentDistanceList Setup
 #RSSI Path Loss Calculation
@@ -22,7 +22,7 @@ def PathLoss(d):
 CurrentDistance = InitialDistance
 RSSIList = []
 CurrentDistanceList = []#In case
-for i in range(0,300):
+for i in range(SimulationSample):
     RSSIList.append( PathLoss(CurrentDistance) - PathLoss(CurrentDistance + 1/3.0) )
     CurrentDistanceList.append(CurrentDistance)
     CurrentDistance = CurrentDistance + 1/3.0
