@@ -11,7 +11,7 @@ InitialDistance = float(input("plz input the initial distance between Alice and 
 InitialPower = 10.0 #unit:dBm = 10*log(W/mW)
 
 
-#Data Preprocessing
+#Unlabeled Data Preprocessing
 
 
 #RSSI List and CurrentDistanceList Setup
@@ -31,7 +31,7 @@ for i in range(0,300):
 AttributesTable = {"RSSI": RSSIList}
 AttributesTable = pd.DataFrame(AttributesTable)
 #Output as CSV
-AttributesTable.to_csv("Test.csv")
+AttributesTable.to_excel("Test.xlsx", sheet_name = 'AttributesTable',index = False)
 
 
 
