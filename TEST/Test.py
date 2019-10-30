@@ -1,4 +1,4 @@
-from sklearn.svm import SVC
+#from sklearn.svm import SVC
 
 svc = SVC(kernel='rbf', gamma=1.0)
 

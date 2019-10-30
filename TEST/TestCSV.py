@@ -19,6 +19,18 @@ for i in range(0,300):
 RSSIList = []
 for i in range(0,300):
     RSSIList.append( math.log(10,10) )
-print(RSSIList)
+#print(RSSIList)
 
-    
+
+Origin = {'Time' : TimeList, 'RSSIValue' : RSSIList}
+#print(Origin)
+time = list( Origin.items() )
+#print (time) 
+#for i in 
+#for i in time:
+#   print( time[0][i] )
+
+#print(time[0][0])
+
+
+
