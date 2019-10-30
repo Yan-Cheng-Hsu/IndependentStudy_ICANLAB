@@ -33,6 +33,12 @@ AttributesTable = pd.DataFrame(AttributesTable)
 #Output as CSV
 AttributesTable.to_excel("Test.xlsx", sheet_name = 'AttributesTable',index = False)
 
+#Unlabeled Data preprocess ends 
+
+#reload the Label Data
+LabeledAttributesTable = pd.read_excel("Test_Labeled.xlsx")
+print(LabeledAttributesTable.shape)
+
 
 
 

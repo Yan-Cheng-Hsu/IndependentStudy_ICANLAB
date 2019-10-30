@@ -15,12 +15,12 @@ colnames = ['sepal-length', 'sepal-width', 'petal-length', 'petal-width', 'Class
 irisdata = pd.read_csv(url, names=colnames)
 irisdata.to_csv("Test.csv")
 
-X = irisdata.drop('Class', axis=1)#y = pd.DataFrame
+X = irisdata.drop('Class', axis=1)#x = pd.DataFrame
 y = irisdata['Class']#y = pd.Series
 #x.iloc[0:150]
 #y is equal to list
-print(X)
-print(type(X))
+#print(X)
+#print(type(X))
 
 
 
