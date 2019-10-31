@@ -28,16 +28,42 @@ for i in range(SimulationSample):
     CurrentDistance = CurrentDistance + 1/3.0
 
 #Attribute Table setup as DataFrame
-AttributesTable = {"RSSI": RSSIList}
+
+AttributesTable = { "RSSI": RSSIList, "Distance": CurrentDistanceList }
 AttributesTable = pd.DataFrame(AttributesTable)
+
 #Output as CSV
+
 AttributesTable.to_excel("Test.xlsx", sheet_name = 'AttributesTable',index = False)
 
 #Unlabeled Data preprocess ends 
 
-#reload the Label Data
+
+
+#reload the Labeled Data
+
 LabeledAttributesTable = pd.read_excel("Test_Labeled.xlsx")
-print(LabeledAttributesTable.shape)
+
+#Seperate Data to Training Data and Testing Data
+
+X = LabeledAttributesTable.drop('Y',axis = 1)
+Y = LabeledAttributesTable['Y']
+
+
+X_TrainingData, X_TestingData, Y_TrainingData, Y_Testing = train_test_split(X, Y, test_size = 0.20)
+
+
+
+#Main Program
+
+Iteration = 0
+
+while Iteration < len( Y_TrainingData ):
+    
+
+
+
+
 
 
 

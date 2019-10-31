@@ -19,7 +19,7 @@ X = irisdata.drop('Class', axis=1)#x = pd.DataFrame
 y = irisdata['Class']#y = pd.Series
 #x.iloc[0:150]
 #y is equal to list
-#print(X)
+print(X)
 #print(type(X))
 
 
@@ -34,11 +34,11 @@ svclassifier.fit(X_train, y_train)
 y_pred = svclassifier.predict(X_test)
 
 from sklearn.metrics import classification_report, confusion_matrix
-print(confusion_matrix(y_test, y_pred))
-print("=========================")
-print( type(confusion_matrix(y_test, y_pred)) )
-print(classification_report(y_test, y_pred))
-print( type(classification_report(y_test, y_pred)) )
+#print(confusion_matrix(y_test, y_pred))
+#print("=========================")
+#print( type(confusion_matrix(y_test, y_pred)) )
+#print(classification_report(y_test, y_pred))
+#print( type(classification_report(y_test, y_pred)) )
 
 
 ################################################################
