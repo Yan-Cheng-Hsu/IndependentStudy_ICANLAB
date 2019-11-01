@@ -51,14 +51,14 @@ Y = AttributesTable['Y']
 
 X_TrainingData, X_TestingData, Y_TrainingData, Y_TestingData = train_test_split(X, Y, test_size = 0.20)
 
-#==============Main Program Start==============
+#==============Main Program Start==============#
 
 Iteration = 10
 AccuracyList = []
 CrossEntopyLossList = []
 HingeLossList = []
 
-while Iteration =< len(Y_TrainingData):
+while Iteration <= len(Y_TrainingData):
     svclassifier = SVC(kernel='rbf')
     svclassifier.fit( X_TrainingData[0:Iteration], Y_TrainingData[0:Iteration] )
     Y_PredictionData = svclassifier.predict( X_TestingData )
@@ -70,7 +70,6 @@ while Iteration =< len(Y_TrainingData):
     print( confusion_matrix( Y_TestingData, Y_PredictionData ) )#this is the support vector
     print( classification_report( Y_TestingData, Y_PredictionData ) )
     Iteration = Iteration + 1
-
 
 TempDict = { "Accuracy":AccuracyList, "HingeLoss": HingeLossList, "CrossEntropy": CrossEntopyLossList }
 EvaluationTable = pd.DataFrame(TempDict)
