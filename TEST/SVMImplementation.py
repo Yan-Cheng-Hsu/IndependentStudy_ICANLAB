@@ -73,7 +73,7 @@ while Iteration <= len(Y_TrainingData):
 
 TempDict = { "Accuracy":AccuracyList, "HingeLoss": HingeLossList, "CrossEntropy": CrossEntopyLossList }
 EvaluationTable = pd.DataFrame(TempDict)
-EvaluationTable.to_excel( "EvaluationTable.xlsx", sheet_name = "EvaluationTable", index = False )
+EvaluationTable.to_excel( "EvaluationTable.xlsx", sheet_name = "EvaluationTable")
 
 
 
