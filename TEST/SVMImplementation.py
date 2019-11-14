@@ -35,13 +35,17 @@ for i in range(SimulationSample):
     CurrentDistanceList.append( np.random.uniform(0,100) )
     Y.append(0)
 
-    
+
+
 #Attribute Table setup as DataFrame
 
 AttributesTable = { "RSSI": RSSIList, "Distance": CurrentDistanceList, 'Y':Y }
 AttributesTable = pd.DataFrame(AttributesTable)
 
+AttributesColumnNameList = ["RSSI","Distance",'Y']
 
+for i in AttributesColumnNameList:
+    AttributesTable
 
 
 #Seperate the Data
