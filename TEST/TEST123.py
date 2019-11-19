@@ -15,7 +15,7 @@ InitialPower = 10.0 #unit:dBm = 10*log(W/mW)
 
 #initial Channel Offset caused by channel mismatch
 InitialChannelMismatchOffsetofSIM = 2540 #unit: Hz
-StandardDeviation = 2.35*( 10**(-7) )
+StandardDeviation = 10
 MeanofCFO = 0
 
 #Unlabeled Data Preprocessing
@@ -60,10 +60,14 @@ for i in range(SimulationSample):
 AttributesTable = { "RSSI": RSSIList,"CFO": CFOList, "Distance": CurrentDistanceList, 'Y':Y }
 AttributesTable = pd.DataFrame(AttributesTable)
 
+
+AttributesTable.to_excel( "Attributes Table.xlsx", sheet_name = "Attribute Table")
+
 AttributesColumnNameList = ["RSSI","CFO","Distance",'Y']
 
 for i in AttributesColumnNameList:
     AttributesTable
+
 
 
 #Seperate the Data
@@ -72,6 +76,10 @@ Y = AttributesTable['Y']
 
 
 X_TrainingData, X_TestingData, Y_TrainingData, Y_TestingData = train_test_split(X, Y, test_size = 0.20)
+
+
+
+
 
 #==============Main Program Start==============#
 
@@ -98,7 +106,21 @@ X_TrainingData, X_TestingData, Y_TrainingData, Y_TestingData = train_test_split(
 #EvaluationTable.to_excel( "EvaluationTable.xlsx", sheet_name = "EvaluationTable")
 
 
+def TrueRSSI(d):
+    return 10 - ( 75.0 + 36.1*( math.log( d/10, 10.0 ) ) )
 
+TrueRSSIList = []
+TrueCFOList = []
+Distance = 5
+
+for i in range(SimulationSample):
+    TrueRSSIList.append(TrueRSSI(Distance))
+    TrueCFOList.append( CFOestimation(InitialChannelMismatchOffsetofSIM, MeanofCFO, StandardDeviation) )
+    Distance = Distance + 1/3
+
+TempDict2 = {"TRUERSSI": TrueRSSIList, "TRUECFO": TrueCFOList}
+a = pd.DataFrame(TempDict2)
+a.to_excel("TRUEvalue.xlsx", sheet_name = "TRUEvalue")
 
 
 
