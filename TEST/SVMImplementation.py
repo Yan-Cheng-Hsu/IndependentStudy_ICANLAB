@@ -15,7 +15,7 @@ InitialPower = 10.0 #unit:dBm = 10*log(W/mW)
 
 #initial Channel Offset caused by channel mismatch
 InitialChannelMismatchOffsetofSIM = 2540 #unit: Hz
-StandardDeviation = 2
+StandardDeviation = 1
 MeanofCFO = 0
 
 #Unlabeled Data Preprocessing
@@ -39,7 +39,7 @@ CurrentDistanceList = []#In case
 Y = []
 for i in range(SimulationSample):
     RSSIList.append( PathLoss(CurrentDistance) - PathLoss(CurrentDistance + 1/3.0) )
-    CFOList.append( CFOestimation(InitialChannelMismatchOffsetofSIM, MeanofCFO, StandardDeviation)  ) 
+    CFOList.append( CFOestimation(InitialChannelMismatchOffsetofSIM, MeanofCFO, StandardDeviation) - CFOestimation(InitialChannelMismatchOffsetofSIM, MeanofCFO, StandardDeviation)  ) 
     CurrentDistanceList.append(CurrentDistance)
     Y.append(1)
     CurrentDistance = CurrentDistance + 1/3.0
@@ -49,7 +49,7 @@ for i in range(SimulationSample):
 
 for i in range(SimulationSample):
     RSSIList.append( np.random.uniform(-5,5) )
-    CFOList.append( CFOestimation(1500, MeanofCFO, StandardDeviation)  )
+    CFOList.append( CFOestimation(1500, MeanofCFO, StandardDeviation) -CFOestimation(1500, MeanofCFO, StandardDeviation)  )
     CurrentDistanceList.append( np.random.uniform(0,100) )
     Y.append(0)
 
